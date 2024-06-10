@@ -8,5 +8,4 @@ import { Component } from '@angular/core';
   styleUrl: './pre-waiver.component.css'
 })
 export class PreWaiverComponent {
-
 }
