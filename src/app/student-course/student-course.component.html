@@ -15,43 +15,42 @@
                <tbody>
                 <!-- {{studentInfo.branch}} -->
                 @for (stdCourse of studentCourses; track $index) {
-                    <tr [ngClass]="{'table-info': stdCourse.isComplete, 'table-white': !stdCourse.isComplete}">
+                    <tr [ngClass]="{'table-info': stdCourse.isCompleted, 'table-white': !stdCourse.isCompleted}">
                         <td>
-                            @if(stdCourse.isComplete){
+                            @if(stdCourse.isCompleted){
                                 <button
                                 type="button"
                                 class="btn btn-outline-primary me-2"
                                 ngbTooltip="Course already completed" tooltipClass="tooltip-styles"
                                 [openDelay]="300"
-                                [closeDelay]="500"
-                                (click)="openCourseDetail(stdCourse.course)"
+                                [closeDelay]="400"
+                                (click)="openCourseDetail(stdCourse.detail)"
                                 >
-                                {{stdCourse.course.courseCode}}
+                                {{stdCourse.detail.code}}
                                 </button>
                                 }@else {
                                     <button
                                     type="button"
-                                    class="btn btn-outline-secondary me-2"
-                                    (click)="openCourseDetail(stdCourse.course)"
+                                    class="btn btn-outline-dark me-2"
+                                    (click)="openCourseDetail(stdCourse.detail)"
                                 >
-                                {{stdCourse.course.courseCode}}
+                                {{stdCourse.detail.code}}
                                 </button>
                                 }
                         </td>
-                        <td><span class="text-truncate">{{stdCourse.course.courseName}}</span></td>
-                        <td><span class="fw-bold">{{stdCourse.course.credits |creditsToString}}</span></td>
-                        <td>{{stdCourse.course.instructor}}</td>
-                        <td>{{stdCourse.course.slot}}</td>
-                        <td> @if(stdCourse.prerequisiteMet){
+                        <td><span class="text-truncate">{{stdCourse.detail.name}}</span></td>
+                        <td><span class="fw-bold">{{stdCourse.detail.credits |creditsToString}}</span></td>
+                        <td>{{stdCourse.detail.instructor}}</td>
+                        <td>{{stdCourse.detail.slot}}</td>
+                        <td> @if(stdCourse.isPrerequisiteMet){
                             <span  class="badge bg-primary px-3 text-white"> YES</span>
                             }@else {
                                 <span  class="badge bg-warning px-3 text-white"> NO</span>
                             }
                         </td>
-                        <td>   @if(stdCourse.prerequisiteWaiver){
-                            <button type="button" class="btn btn-primary p1-2 text-white px-4" (click)="openApplyPreWaiver()"> Apply</button>
-                            }
-                            
+                        <td>   @if(!stdCourse.isWaiverApplied && stdCourse.isPrerequisiteMet ){
+                            <button type="button" class="btn btn-primary p1-2 text-white px-4" (click)="openApplyPreWaiver(stdCourse)"> Apply</button>
+                            }                            
                     </tr>
                 }
                     

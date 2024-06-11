@@ -1,47 +1,46 @@
-import { Component, inject } from '@angular/core';
-import { NgbActiveModal, NgbAlert, NgbAlertModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CourseDetail, PrerequisiteApplyRequest, StudentInfo } from '../models';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, Output, inject } from '@angular/core';
+import { NgbActiveModal, NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { JsonUtils } from '../utils/json-utils';
+import { CommonModule } from '@angular/common';
+import { WaiverRequest } from '../models/interfaces';
+
 @Component({
   selector: 'app-pre-waiver-apply',
   standalone: true,
-  imports: [NgbAlertModule],
+  imports: [NgbAlertModule, ReactiveFormsModule, CommonModule],
   templateUrl: './pre-waiver-apply.component.html',
-  styleUrl: './pre-waiver-apply.component.css'
 })
 export class PreWaiverApplyComponent {
   activeModal = inject(NgbActiveModal);
-  preWaiverForm!: FormGroup
-  alertMessage=''
-  showAlert:boolean = false
+  @Input() request!: WaiverRequest;
+  @Output() applyWaiver = new EventEmitter<void>();
 
-  constructor(private fb: FormBuilder){
-    this.buildApprovalForm()
-  }
-  
-  applyForPrerequisiteWaiver(student: StudentInfo, course: CourseDetail, reason: string):void {
-    const request = {
-        student,
-        course,
-        prerequisiteWaiverRequest: true,
-        reason,
-    };
-    JsonUtils.download(request)
-    this.showAlertMessage("Application successfull!")
+
+  preWaiverForm!: FormGroup;
+  alertMessage = '';
+  showAlert = false;
+
+  constructor(private fb: FormBuilder) {
+    this.preWaiverForm = this.fb.group({reason: ['']});
   }
 
- private buildApprovalForm() {
-    this.preWaiverForm = this.fb.group({
-      reason: ['']
-    });
+
+  onApply():void {
+    this.request.reason = this.preWaiverForm.get('reason')?.value.trim();
+    JsonUtils.download(this.request);
+    this.showAlertMessage("Application successful!");
+    
+    this.applyWaiver.emit();        // Emit the apply event
+    this.activeModal.close();       // Close the modal
   }
+
+
   showAlertMessage(message: string): void {
     this.alertMessage = message;
     this.showAlert = true;
     setTimeout(() => {
       this.showAlert = false;
-    }, 3000); // Hide the alert after 3 seconds
+    }, 3000);                     // Hide the alert after 3 seconds
   }
-
 }

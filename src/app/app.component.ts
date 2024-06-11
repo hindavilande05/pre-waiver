@@ -7,7 +7,6 @@ import { StudentCourseComponent } from './student-course/student-course.componen
   standalone: true,
   imports: [RouterOutlet, StudentCourseComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
 })
 export class AppComponent {
   title = 'pre-waiver';

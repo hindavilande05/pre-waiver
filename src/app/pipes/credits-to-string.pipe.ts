@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Credit } from '../models';
+import { Credit } from '../models/interfaces';
 
 @Pipe({
   name: 'creditsToString',

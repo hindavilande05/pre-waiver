@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { CourseDetail } from '../models';
+import { Course } from '../models/interfaces';
 import { CreditsToStringPipe } from '../pipes/credits-to-string.pipe';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -10,6 +10,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './course-detail.component.html',
 })
 export class CourseDetailComponent {
-  @Input() courseDetail: CourseDetail = {} as CourseDetail
+  @Input() courseDetail: Course = {} as Course
   activeModal = inject(NgbActiveModal);
 }

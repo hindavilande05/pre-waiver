@@ -56,10 +56,14 @@
                 </div>
                 @switch (viewCourse) {
                     @case (ViewCourse.CORE_COURSES) {
-                        <app-student-course [studentCourses]="studentInfo.coreCourses"></app-student-course>
+                        @if(studentInfo.coreCourses.length){
+                            <app-student-course [studentCourses]="studentInfo.coreCourses" [studentProfile]="studentProfile"></app-student-course>
+                        }
                     }
                     @case (ViewCourse.ELECTIVE_COURSES) {
-                        <app-student-course [studentCourses]="studentInfo.electiveCourses"></app-student-course>
+                        @if (studentInfo.electiveCourses.length) {
+                            <app-student-course [studentCourses]="studentInfo.electiveCourses" [studentProfile]="studentProfile"></app-student-course>
+                        }
                     }@default {
 
                     }

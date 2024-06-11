@@ -4,21 +4,16 @@
     <button type="button" class="btn-close btn" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
 </div>
 <div class="modal-body">
-    @if(showAlert){
-        <ngb-alert [dismissible]="false" class="d-block mt-3" type="success">
-            {{ alertMessage }}
-        </ngb-alert> 
-    }
+   
     <div class="card">
         <div class="card-body">
-            <form>
+            <form [formGroup]="preWaiverForm" (ngSubmit)="onApply()">
                 <label for="reason" class="text-dark fw-bold pb-1">Reason</label>
                 <div>
                     <textarea formControlName="reason" id="reason" name="reason" class="form-control border-0 bg-light" rows="4" ></textarea>
                 </div>
                 <div class="py-2">
-                    <!-- TO DO: invoke the (click) = 'applyForPrerequisiteWaiver()' i.e the application logic-->
-                    <button class="btn btn-primary p-0 py-2 px-4"  >Apply</button>
+                    <button type="submit" class="btn btn-primary p-0 py-2 px-4"  >Apply</button>
                 </div>
             </form>
         </div>
