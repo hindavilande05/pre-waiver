@@ -1,0 +1,48 @@
+
+<div class="modal-header">
+			<h5 class="modal-title fw-bold">Course Details</h5>
+			<button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+		</div>
+		<div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th scope="row">Course Code</th>
+                            <td>{{ courseDetail.courseCode }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Course Name</th>
+                            <td>{{ courseDetail.courseName }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Credits</th>
+                            <td>{{ courseDetail.credits | creditsToString }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Instructors</th>
+                            <td>{{ courseDetail.instructor.join(', ') }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Time Slot</th>
+                            <td>{{ courseDetail.slot }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Prerequisites</th>
+                            <td>{{ courseDetail.prerequisites.join(', ') }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Textbooks</th>
+                            <td>{{ courseDetail.textBooks.join(', ') }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Reference Books</th>
+                            <td>{{ courseDetail.referenceBooks.join(', ') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+		</div>
