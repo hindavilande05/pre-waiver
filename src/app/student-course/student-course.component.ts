@@ -6,6 +6,7 @@ import { CreditsToStringPipe } from '../pipes/credits-to-string.pipe';
 import { CommonModule } from '@angular/common';
 import { NgbModal, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseDetailComponent } from '../course-detail/course-detail.component';
+import { PreWaiverApplyComponent } from '../pre-waiver-apply/pre-waiver-apply.component';
 
 @Component({
   selector: 'app-student-course',
@@ -18,9 +19,13 @@ export class StudentCourseComponent implements OnInit {
   studentInfo: StudentInfo = {} as StudentInfo;
   private modalService = inject(NgbModal);
 
-	open(course:CourseDetail) {
+	openCourseDetail(course:CourseDetail) {
 		const modalRef = this.modalService.open(CourseDetailComponent);
 		modalRef.componentInstance.courseDetail = course;
+	}
+
+  openApplyPreWaiver() {
+		 this.modalService.open(PreWaiverApplyComponent);
 	}
   constructor(private studentCourseService: StudentCourseService) { }
 

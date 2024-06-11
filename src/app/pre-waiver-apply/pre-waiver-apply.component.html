@@ -1,0 +1,23 @@
+
+<div class="modal-header  text-center">
+    <h6 class="modal-title">Apply for Pre-requisite Waiver</h6>
+    <button type="button" class="btn-close btn" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+    <div class="card">
+        <div class="card-body">
+            <form>
+                <label for="reason" class="text-dark fw-bold pb-1">Reason</label>
+                <div>
+                    <textarea id="reason" name="reason" class="form-control border-0 bg-light" rows="4" ></textarea>
+                </div>
+                <div class="py-2">
+                    <button class="btn btn-primary p-0 py-2 px-4">Apply</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+</div>
