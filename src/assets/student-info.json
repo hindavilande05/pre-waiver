@@ -1,0 +1,159 @@
+{
+  "program": "Computer Science",
+  "branch": "Software Engineering",
+  "semester": ["Fall 2023", "Spring 2024"],
+  "coreCourses": [
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS101",
+        "courseName": "Introduction to Programming",
+        "credits": "3-1-2-4",
+        "instructor": ["Dr. Smith", "Prof. Johnson"],
+        "slot": "A1",
+        "prerequisites": [],
+        "textBooks": ["Programming Basics by Author A"],
+        "referenceBooks": ["Advanced Programming by Author B"]
+      },
+      "prerequisiteMet": true,
+      "prerequisiteWaiver": false
+    },
+    {
+      "isComplete": true,
+      "course": {
+        "courseCode": "CS201",
+        "courseName": "Data Structures",
+        "credits": "3-1-0-4",
+        "instructor": ["Dr. Brown"],
+        "slot": "B1",
+        "prerequisites": ["CS101"],
+        "textBooks": ["Data Structures by Author C"],
+        "referenceBooks": ["Algorithms by Author D"]
+      },
+      "prerequisiteMet": true,
+      "prerequisiteWaiver": false
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS301",
+        "courseName": "Database Systems",
+        "credits": "3-0-2-4",
+        "instructor": ["Prof. Davis"],
+        "slot": "C1",
+        "prerequisites": ["CS201"],
+        "textBooks": ["Database Systems by Author E"],
+        "referenceBooks": ["SQL Essentials by Author F"]
+      },
+      "prerequisiteMet": false,
+      "prerequisiteWaiver": true
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS302",
+        "courseName": "Operating Systems",
+        "credits": "3-1-0-4",
+        "instructor": ["Dr. Evans"],
+        "slot": "F1",
+        "prerequisites": ["CS201"],
+        "textBooks": ["Operating Systems by Author G"],
+        "referenceBooks": ["Systems Programming by Author H"]
+      },
+      "prerequisiteMet": true,
+      "prerequisiteWaiver": false
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS303",
+        "courseName": "Computer Networks",
+        "credits": "3-0-2-4",
+        "instructor": ["Prof. Harris"],
+        "slot": "G1",
+        "prerequisites": ["CS201"],
+        "textBooks": ["Computer Networks by Author I"],
+        "referenceBooks": ["Networking Basics by Author J"]
+      },
+      "prerequisiteMet": true,
+      "prerequisiteWaiver": false
+    }
+  ],
+  "electiveCourses": [
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS401",
+        "courseName": "Artificial Intelligence",
+        "credits": "3-1-0-4",
+        "instructor": ["Dr. Wilson"],
+        "slot": "D1",
+        "prerequisites": ["CS301"],
+        "textBooks": ["AI by Author G"],
+        "referenceBooks": ["Machine Learning by Author H"]
+      },
+      "prerequisiteMet": false,
+      "prerequisiteWaiver": true
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS402",
+        "courseName": "Cybersecurity",
+        "credits": "3-0-2-4",
+        "instructor": ["Dr. Lee"],
+        "slot": "E1",
+        "prerequisites": ["CS301"],
+        "textBooks": ["Cybersecurity Essentials by Author I"],
+        "referenceBooks": ["Network Security by Author J"]
+      },
+      "prerequisiteMet": false,
+      "prerequisiteWaiver": false
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS403",
+        "courseName": "Machine Learning",
+        "credits": "3-1-0-4",
+        "instructor": ["Prof. Martin"],
+        "slot": "H1",
+        "prerequisites": ["CS301"],
+        "textBooks": ["Machine Learning by Author K"],
+        "referenceBooks": ["Deep Learning by Author L"]
+      },
+      "prerequisiteMet": true,
+      "prerequisiteWaiver": false
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS404",
+        "courseName": "Blockchain Technology",
+        "credits": "3-0-2-4",
+        "instructor": ["Dr. Patel"],
+        "slot": "I1",
+        "prerequisites": ["CS301"],
+        "textBooks": ["Blockchain Basics by Author M"],
+        "referenceBooks": ["Cryptography by Author N"]
+      },
+      "prerequisiteMet": true,
+      "prerequisiteWaiver": false
+    },
+    {
+      "isComplete": false,
+      "course": {
+        "courseCode": "CS405",
+        "courseName": "Quantum Computing",
+        "credits": "3-1-0-4",
+        "instructor": ["Prof. Nguyen"],
+        "slot": "J1",
+        "prerequisites": ["CS301"],
+        "textBooks": ["Quantum Computing by Author O"],
+        "referenceBooks": ["Quantum Algorithms by Author P"]
+      },
+      "prerequisiteMet": false,
+      "prerequisiteWaiver": true
+    }
+  ]
+}

@@ -1,45 +1,44 @@
 <div class="card">
-  <div class="row" style="margin: 5px">
-    <div class="col-md-3" id="left-pane-container">
-        <div class="card " id="left-pane-card" (click)="toggleCard('coursesOffered')">
-            <div class="d-flex justify-content-between" style="align-items: center;">   
-            <p>Courses offered in the upcoming semester</p>
-            @if(!cardOpened['coursesOffered']){
-              <i class="fas fa-regular fa-circle-plus fa-2x"></i>
-            }
-            @else {
-              <i class="fa-solid fa-arrow-right-long fa-2x"></i>
-            }
-        </div>
+    <div class="row" style="margin: 5px">
+      <div class="col-md-3" id="left-pane-container">
+            <div class="card " id="left-pane-card" (click)="toggleCard('coursesOffered')">
+                <div class="d-flex justify-content-between" style="align-items: center;">   
+                <small>Courses offered in the upcoming semester</small>
+                @if(!cardOpened['coursesOffered']){
+                    <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
+                }
+                @else {
+                    <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
+                }
+            </div>
+            </div>
+            <div class="card " id="left-pane-card" (click)="toggleCard('coreCourses')">
+            <div class="d-flex justify-content-between" style="align-items: center;"> 
+                <small>Your Core Courses</small>
+                @if(!cardOpened['coreCourses']){
+                <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
+                }
+                @else {
+                <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
+                }
+                
+            </div>
+            </div>
+            <div class="card " id="left-pane-card" (click)="toggleCard('electiveCourses')">
+            <div class="d-flex justify-content-between" style="align-items: center;">
+                <small>Your Elective Courses</small>
+                @if(!cardOpened['electiveCourses']){
+                    <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
+                }
+                @else {
+                    <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
+                }
+            </div>
+          </div>
       </div>
-      <div class="card " id="left-pane-card" (click)="toggleCard('coreCourses')">
-        <div class="d-flex justify-content-between" style="align-items: center;"> 
-          <p>Your Core Courses</p>
-          @if(!cardOpened['coreCourses']){
-            <i class="fas fa-regular fa-circle-plus fa-2x"></i>
-          }
-          @else {
-            <i class="fa-solid fa-arrow-right-long fa-2x"></i>
-          }
-           
-        </div>
-      </div>
-      <div class="card " id="left-pane-card" (click)="toggleCard('electiveCourses')">
-        <div class="d-flex justify-content-between" style="align-items: center;">
-            <p>Your Elective Courses</p>
-            @if(!cardOpened['electiveCourses']){
-              <i class="fas fa-regular fa-circle-plus fa-2x"></i>
-            }
-            @else {
-              <i class="fa-solid fa-arrow-right-long fa-2x"></i>
-            }
-        </div>
-      </div>
-    </div>
-    <div class="col-md-9">
-      <div class="card">
-        <p>right side</p>
+      <div class="col-md-9">
+        <app-student-course></app-student-course>
       </div>
     </div>
   </div>
-</div>
+  

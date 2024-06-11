@@ -1,0 +1,63 @@
+<div class="card rounded-0">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover ">
+                <thead class="">
+                    <tr class="">
+                        <th>Course Code</th>
+                        <th>Course Name</th>
+                        <th>Credits(L-T-P-C)</th>
+                        <th>Intructor</th>
+                        <th>Slot</th>
+                        <th>Prerequisite met?</th>
+                        <th>Prerequisite Waiver</th>
+                    </tr>
+                </thead>
+               <tbody>
+                <!-- {{studentInfo.branch}} -->
+                @for (stdCourse of studentInfo.coreCourses; track $index) {
+                    <tr [ngClass]="{'table-info': stdCourse.isComplete, 'table-white': !stdCourse.isComplete}">
+                        <td>
+                            @if(stdCourse.isComplete){
+                                <button
+                                type="button"
+                                class="btn btn-outline-primary me-2"
+                                ngbTooltip="Course already completed" tooltipClass="tooltip-styles"
+                                [openDelay]="300"
+                                [closeDelay]="500"
+                                (click)="open(stdCourse.course)"
+                                >
+                                {{stdCourse.course.courseCode}}
+                                </button>
+                                }@else {
+                                    <button
+                                    type="button"
+                                    class="btn btn-outline-secondary me-2"
+                                    (click)="open(stdCourse.course)"
+                                >
+                                {{stdCourse.course.courseCode}}
+                                </button>
+                                }
+                        </td>
+                        <td><span class="text-truncate">{{stdCourse.course.courseName}}</span></td>
+                        <td><span class="fw-bold">{{stdCourse.course.credits |creditsToString}}</span></td>
+                        <td>{{stdCourse.course.instructor}}</td>
+                        <td>{{stdCourse.course.slot}}</td>
+                        <td> @if(stdCourse.prerequisiteMet){
+                            <span  class="badge bg-primary px-3 text-white"> YES</span>
+                            }@else {
+                                <span  class="badge bg-warning px-3 text-white"> NO</span>
+                            }
+                        </td>
+                        <td>   @if(stdCourse.prerequisiteWaiver){
+                            <button type="button" class="btn btn-primary p1-2 text-white px-4"> Apply</button>
+                            }
+                            
+                    </tr>
+                }
+                    
+               </tbody>
+            </table>
+        </div>
+    </div>
+</div>
