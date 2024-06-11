@@ -31,3 +31,10 @@ export interface Credit {
     electiveCourses: StudentCourse[]; // List of elective courses
   }
   
+
+export interface PrerequisiteApplyRequest {
+  student: StudentInfo; // Student details
+  course: CourseDetail; // Course details
+  prerequisiteWaiverRequest: boolean; // Indicates if the prerequisite waiver is requested
+  reason: string; // Reason for the waiver request
+}
