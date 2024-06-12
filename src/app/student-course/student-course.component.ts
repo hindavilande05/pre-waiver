@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject , HostListener} from '@angular/core';
 import { StudentCourseService } from '../services/student-course.service';
 import { Course, CourseItem, StudentCourseInfo, StudentProfile, WaiverRequest } from '../models/interfaces';
 import { CreditsToStringPipe } from '../pipes/credits-to-string.pipe';
@@ -7,17 +7,33 @@ import { NgbModal, NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { CourseDetailComponent } from '../course-detail/course-detail.component';
 import { PreWaiverApplyComponent } from '../pre-waiver-apply/pre-waiver-apply.component';
 
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-student-course',
   standalone: true,
-  imports: [CreditsToStringPipe, CommonModule, NgbTooltipModule],
+  imports: [NgbAccordionModule, CreditsToStringPipe, CommonModule, NgbTooltipModule],
   providers: [StudentCourseService],
   templateUrl: './student-course.component.html',
 })
-export class StudentCourseComponent {
+export class StudentCourseComponent implements OnInit{
+  isMobile: boolean = false;
   @Input()studentCourses!: CourseItem[];
   @Input() studentProfile!: StudentProfile;
   private modalService = inject(NgbModal);
+
+  constructor() {
+    this.checkScreenSize();
+  }
+  ngOnInit(): void {}
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.isMobile = window.innerWidth < 768; // Example breakpoint for mobile
+  }
 
 
   openCourseDetail(course: Course) {

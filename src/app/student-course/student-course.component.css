@@ -1,0 +1,8 @@
+.accordion-button-icon {
+    display: none; /* Hide the angle bracket icon */
+}
+  
+.accordion-button .accordion-button-icon {
+    display: none !important; /* Forcefully hide the icon */
+}
+  
