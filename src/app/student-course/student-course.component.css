@@ -6,3 +6,13 @@
     display: none !important; /* Forcefully hide the icon */
 }
   
+
+/* In styles.css or component-name.component.css */
+.custom-striped-table tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2; /* Change this to your desired color */
+  }
+  
+  .custom-striped-table tbody tr:nth-of-type(even) {
+    background-color: #e6e6e6; /* Change this to your desired color */
+  }
+  
