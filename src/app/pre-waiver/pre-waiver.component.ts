@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , HostListener, TemplateRef, inject} from '@angular/core';
 import { StudentCourseComponent } from '../student-course/student-course.component';
 import { CourseDetailComponent } from '../course-detail/course-detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentCourseService } from '../services/student-course.service';
 import { StudentCourseInfo, StudentProfile } from '../models/interfaces';
+
+
+
+import { NgbDatepickerModule, NgbOffcanvas, OffcanvasDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 export enum ViewCourse {
   CORE_COURSES,
@@ -14,12 +18,18 @@ export enum ViewCourse {
 @Component({
   selector: 'app-pre-waiver',
   standalone: true,
-  imports: [HttpClientModule, StudentCourseComponent, CourseDetailComponent],
+  imports: [HttpClientModule, StudentCourseComponent, CourseDetailComponent, NgbDatepickerModule],
   providers: [StudentCourseService],
   templateUrl: './pre-waiver.component.html',
   styleUrls: ['./pre-waiver.component.css']
 })
 export class PreWaiverComponent implements OnInit {
+
+  private offcanvasService = inject(NgbOffcanvas);
+	closeResult = '';
+
+	
+  isMobile: boolean = false;
   ViewCourse = ViewCourse;
   viewCourse!: ViewCourse;
   studentProfile:StudentProfile = {} as StudentProfile
@@ -29,9 +39,25 @@ export class PreWaiverComponent implements OnInit {
     [ViewCourse.CORE_COURSES]: false,
     [ViewCourse.ELECTIVE_COURSES]: false,
     [ViewCourse.UPCOMING_SEMESTER_COURSES]: false
+
   };
 
-  constructor(private studentCourseService: StudentCourseService) {}
+  
+  constructor(private studentCourseService: StudentCourseService) {
+    this.checkScreenSize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.isMobile = window.innerWidth < 768; // Example breakpoint for mobile
+  }
+
+
+
 
   ngOnInit(): void {
     this.studentCourseService.getStudentInfo().subscribe({
@@ -52,4 +78,16 @@ export class PreWaiverComponent implements OnInit {
     this.cardOpened[view] = true;
     this.viewCourse = view;
   }
+
+  open(content: TemplateRef<any>) {
+		this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvas-basic-title' }).result.then(
+			(result) => {
+				this.closeResult = `Closed with: ${result}`;
+			},
+			(reason) => {
+				this.closeResult = `Dismissed`;
+			},
+		);
+	}
+
 }

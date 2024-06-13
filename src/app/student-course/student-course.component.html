@@ -62,7 +62,7 @@
             }
           </td>
           <td>
-            @if(!stdCourse.isWaiverApplied && stdCourse.isPrerequisiteMet && !stdCourse.isCompleted ){
+            @if(!stdCourse.isWaiverApplied && !stdCourse.isPrerequisiteMet && !stdCourse.isCompleted ){
             <button
               type="button"
               class="btn btn-primary p1-2 text-white px-4"
@@ -148,7 +148,7 @@
                 </tr>
               </table>
 
-              @if(!stdCourse.isWaiverApplied && stdCourse.isPrerequisiteMet && !stdCourse.isCompleted ){
+              @if(!stdCourse.isWaiverApplied && !stdCourse.isPrerequisiteMet && !stdCourse.isCompleted ){
               <button
                 type="button"
                 class="btn btn-primary p1-2 text-white px-4"
