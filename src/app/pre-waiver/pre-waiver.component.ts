@@ -1,4 +1,4 @@
-import { Component, OnInit , HostListener, TemplateRef, inject} from '@angular/core';
+import { Component, OnInit , TemplateRef, inject} from '@angular/core';
 import { StudentCourseComponent } from '../student-course/student-course.component';
 import { CourseDetailComponent } from '../course-detail/course-detail.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,8 +28,6 @@ export class PreWaiverComponent implements OnInit {
   private offcanvasService = inject(NgbOffcanvas);
 	closeResult = '';
 
-	
-  isMobile: boolean = false;
   ViewCourse = ViewCourse;
   viewCourse!: ViewCourse;
   studentProfile:StudentProfile = {} as StudentProfile
@@ -42,22 +40,8 @@ export class PreWaiverComponent implements OnInit {
 
   };
 
-  
   constructor(private studentCourseService: StudentCourseService) {
-    this.checkScreenSize();
   }
-
-  @HostListener('window:resize', ['$event'])
-  onResize() {
-    this.checkScreenSize();
-  }
-
-  private checkScreenSize() {
-    this.isMobile = window.innerWidth < 768; // Example breakpoint for mobile
-  }
-
-
-
 
   ngOnInit(): void {
     this.studentCourseService.getStudentInfo().subscribe({
@@ -78,16 +62,5 @@ export class PreWaiverComponent implements OnInit {
     this.cardOpened[view] = true;
     this.viewCourse = view;
   }
-
-  open(content: TemplateRef<any>) {
-		this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvas-basic-title' }).result.then(
-			(result) => {
-				this.closeResult = `Closed with: ${result}`;
-			},
-			(reason) => {
-				this.closeResult = `Dismissed`;
-			},
-		);
-	}
 
 }

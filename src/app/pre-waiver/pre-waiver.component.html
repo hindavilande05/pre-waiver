@@ -1,97 +1,74 @@
 <div class="card">
-    <div class="row" style="margin: 5px;">
-      <div class="col-md-3" id="left-pane-container" >
-            <div class="card " id="left-pane-card" (click)="setView(ViewCourse.UPCOMING_SEMESTER_COURSES)">
-                <div class="d-flex justify-content-between" style="align-items: center;">   
-                <small>Courses offered in the upcoming semester</small>
-                @if(!cardOpened[ViewCourse.UPCOMING_SEMESTER_COURSES]){
-                    <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
-                }
-                @else {
-                    <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
-                }
-            </div>
+  <div class="row" style="margin: 5px;">
+    <div class="col-md-3" id="left-pane-container">
+          <div class="card " id="left-pane-card" (click)="setView(ViewCourse.UPCOMING_SEMESTER_COURSES)">
+              <div class="d-flex justify-content-between" style="align-items: center;">   
+              <small>Courses offered in the upcoming semester</small>
+              @if(!cardOpened[ViewCourse.UPCOMING_SEMESTER_COURSES]){
+                  <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
+              }
+              @else {
+                  <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
+              }
           </div>
-          <div
-            class="card"
-            id="left-pane-card"
-            (click)="setView(ViewCourse.CORE_COURSES)"
-          >
-            <div
-              class="d-flex justify-content-between"
-              style="align-items: center"
-            >
+          </div>
+          <div class="card " id="left-pane-card" (click)="setView(ViewCourse.CORE_COURSES)">
+          <div class="d-flex justify-content-between" style="align-items: center;"> 
               <small>Your Core Courses</small>
               @if(!cardOpened[ViewCourse.CORE_COURSES]){
               <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
-              } @else {
+              }
+              @else {
               <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
               }
-            </div>
+              
           </div>
-          <div
-            class="card"
-            id="left-pane-card"
-            (click)="setView(ViewCourse.ELECTIVE_COURSES)"
-          >
-            <div
-              class="d-flex justify-content-between"
-              style="align-items: center"
-            >
+          </div>
+          <div class="card " id="left-pane-card" (click)="setView(ViewCourse.ELECTIVE_COURSES )">
+          <div class="d-flex justify-content-between" style="align-items: center;">
               <small>Your Elective Courses</small>
               @if(!cardOpened[ViewCourse.ELECTIVE_COURSES]){
-              <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
-              } @else {
-              <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
+                  <i class="fas fa-regular fa-circle-plus fa-2x text-primary"></i>
               }
-            </div>
+              @else {
+                  <i class="fa-solid fa-arrow-right-long fa-2x text-primary"></i>
+              }
           </div>
         </div>
-      </div>
     </div>
-  </ng-template>
-
-
-
-
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">
-    <i class="fas fa-solid fa-bars fa-2x"></i>
-  </button>
-
-
-  <div class="col-md-9">
-    <div class="card rounded-0" style="border: none;">
-        <div class="card-body p-0 m-0">
-            <div class="card bg-dark text-white">
-               <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4 col-sm-12">
-                        <span class="mx-2">Program: {{studentInfo.program}}</span>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <span class="mx-2">Branch: {{studentInfo.branch}}</span>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <span class="mx-2">Semester: {{studentInfo.semester}}</span>
-                    </div>
-                </div>
-               </div>
-            </div>
-            @switch (viewCourse) {
-                @case (ViewCourse.CORE_COURSES) {
-                    @if(studentInfo.coreCourses.length){
-                        <app-student-course [studentCourses]="studentInfo.coreCourses" [studentProfile]="studentProfile"></app-student-course>
-                    }
-                }
-                @case (ViewCourse.ELECTIVE_COURSES) {
-                    @if (studentInfo.electiveCourses.length) {
-                        <app-student-course [studentCourses]="studentInfo.electiveCourses" [studentProfile]="studentProfile"></app-student-course>
-                    }
-                }@default {
-                }
-            }
-        </div>
+    <div class="col-md-9">
+      <div class="card rounded-0" style="border: none;">
+          <div class="card-body p-0 m-0">
+              <div class="card bg-dark text-white">
+                 <div class="card-body">
+                  <div class="row">
+                      <div class="col-md-4 col-sm-12">
+                          <span class="mx-2">Program: {{studentInfo.program}}</span>
+                      </div>
+                      <div class="col-md-4 col-sm-12">
+                          <span class="mx-2">Branch: {{studentInfo.branch}}</span>
+                      </div>
+                      <div class="col-md-4 col-sm-12">
+                          <span class="mx-2">Semester: {{studentInfo.semester}}</span>
+                      </div>
+                  </div>
+                 </div>
+              </div>
+              @switch (viewCourse) {
+                  @case (ViewCourse.CORE_COURSES) {
+                      @if(studentInfo.coreCourses.length){
+                          <app-student-course [studentCourses]="studentInfo.coreCourses" [studentProfile]="studentProfile"></app-student-course>
+                      }
+                  }
+                  @case (ViewCourse.ELECTIVE_COURSES) {
+                      @if (studentInfo.electiveCourses.length) {
+                          <app-student-course [studentCourses]="studentInfo.electiveCourses" [studentProfile]="studentProfile"></app-student-course>
+                      }
+                  }@default {
+                  }
+              }
+          </div>
+      </div>
     </div>
   </div>
 </div>
-}
